@@ -11,19 +11,22 @@ headers:{
     },
 };
 
-const apiURL = "https://api.api-ninjas.com/v1/dadjokes?limit=200"
+const apiURL = "https://api.api-ninjas.com/v1/dadjokes?limit=1"
 
 async function getJoke() {
     btnEl.style.cursor = "wait";
-    const response = await fetch(apiURL, options);
+    const response = await fetch("https://api.api-ninjas.com/v1/dadjokes?limit=1", options);
     const jsondata = await response.json();
-    const url = jsonData.message;
+// 
+const jokes = document.getElementById("joke");
+jokes.textContent = jsondata[0].joke
 }
+btnEl.src = btnEl.url;
+btnEl.style.cursor = 'pointer';
 
+// function getJoke(){
+//     console.log("clicked");
+// }
 
-function getJoke(){
-    console.log("clicked");
-}
-
-btnEl.addEventListener("click", getJoke)
+btnEl.addEventListener("click", getJoke);
 
