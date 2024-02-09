@@ -1,5 +1,7 @@
-const btnEl = document.getElementById("btn")
+//using Dom Monuplation
+const btnEl = document.getElementById("btn");
 
+//getting API key and catche
 const apiKey = "fi7n7HFSOGMHu1aEPWSU/w==HgiYLSB32QmIg3qb";
 
 const options = {
@@ -9,12 +11,13 @@ headers:{
     },
 };
 
-const apiURL = "https://api.api-ninjas.com/v1/dadjokes?limit=1"
+const apiURL = "https://api.api-ninjas.com/v1/dadjokes?limit=200"
 
 async function getJoke() {
+    btnEl.style.cursor = "wait";
     const response = await fetch(apiURL, options);
-    const data = await response.json()
-    console.log(data);
+    const jsondata = await response.json();
+    const url = jsonData.message;
 }
 
 
